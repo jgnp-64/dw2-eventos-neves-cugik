@@ -39,6 +39,10 @@ git add .
 git commit -m "Mensagem do commit"
 git push
 ```
+### E caso não quiser colocar nenhuma mensagem:
+```
+git commit --allow-empty-message -m ""
+```
 ## Atualizar o repositório já clonado 
 ```
 git pull
