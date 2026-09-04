@@ -1,18 +1,8 @@
-#from flask import Flask
+from flask import Flask
+from controllers.evento_controller import evento_bp
 
-#app = Flask(__name__)
+app = Flask(__name__)
+app.register_blueprint(evento_bp)
 
-#@app.route("/")
-#def inicio():
-#    return "Olá, mundo! Meu primeiro servidor web."
-
-#@app.route("/sobre")
-#def sobre():
-#    return "Sistema de Gestão de Eventos Acadêmicos - DW2."
-
-#@app.route("/eventos")
-#def eventos():
-#    return "Aqui listaremos os eventos cadastrados."
-
-#if __name__ == "__main__":
-#    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
