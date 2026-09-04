@@ -15,7 +15,7 @@ pip install flask
 ### Após isso, só é necessário executar ___app.py___
 
 
-# Comandos importantes para o git
+# 2. Comandos importantes para o git
 
 ## Configurar nome e email
 ```
