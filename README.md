@@ -1,3 +1,7 @@
+# Alunos:
+João Gabriel Neves Palombo
+Eric Cugik de Morais
+
 # 1. Como rodar o projeto?
 
 ## Ativar ambiente virtual:
