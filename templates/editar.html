@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<!--Substitui o titulo-->
+{% block title %} Editar evento {% endblock %}
+
+<!---Neste ponto vai ser substituído lá no block conteudo do base.html--->
+{% block conteudo %}
+
+<h2>Editar evento</h2>
+
+<form method="post">
+<!--O forms irá ser aberto já preenchido com os valores recentes-->
+
+<input name="nome" type="text" value="{{ evento.nome }}" required>
+<input name="data" type="date" value="{{ evento.data }}" required>
+<input name="local" value="{{ evento.local or '' }}">
+<input name="vagas" value="{{ '' if evento.vagas is none else evento.vagas }}">
+
+<button type="submit">Salvar</button>
+
+</form>
+
+<p><a href="{{ url_for('eventos.index') }}">Cancelar</a></p>
+
+{% endblock %}

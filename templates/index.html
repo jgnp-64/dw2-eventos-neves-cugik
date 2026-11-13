@@ -1,19 +1,48 @@
-<!-- templates/index.html -->
-<!doctype html>
-<html lang="pt-br">
-  <head><meta charset="utf-8"><title>Eventos</title></head>
-  <body>
-    <h1>Eventos Acadêmicos</h1>
+{% extends "base.html" %}
+
+{% block title %}Cadastro de Eventos{% endblock %}
+
+{% block conteudo %}
+
+    <h1>Cadastro de Eventos</h1>
     <form method="post">
-      <input name="nome" placeholder="Nome" required>
-      <input name="data" placeholder="Data" required>
-      <input name="local" placeholder="Local" required>
+      <input name="nome" placeholder="Insira seu nome" required>
+      <input name="data" type="date" placeholder="Insira a data atual" required>
+      <input name="local" placeholder="Insira seu local">
+      <input name="vagas" placeholder="Insira o número de vagas">
       <button type="submit">Cadastrar</button>
     </form>
-    <ul>
+
+
+    <h2>Eventos Cadastrados</h2>
+
+    <!--Se existe eventos dentro da lista-->
+    {% if eventos %}
+
+    <!--output: X eventos cadastrados-->
+     <p class="contagem">{{ eventos|length }} evento(s) cadastrados.</p>
+
+     <ul>
       {% for e in eventos %}
-        <li>{{ e.nome }} — {{ e.data }} — {{ e.local }}</li>
+      <li>
+        <!--Exibe conteúdo da variável (vagas vazio = None, mostramos em branco)-->
+        <strong>{{ e.id }}</strong> — {{ e.nome }} — {{ e.data }} — {{ e.local }} — {{ '' if e.vagas is none else e.vagas }}
+        vagas
+
+        <!--UPDATE, temos o id com argumento-->
+        <a href="{{ url_for('eventos.editar', id=e.id) }}">Editar</a>
+
+        <!--DELETE, sem link: precisa ser um formulario POST-->
+        <form method="post" action="{{ url_for('eventos.deletar', id=e.id) }}">
+              Excluir este evento?
+          <button type="submit">Excluir</button>
+        </form>
+       </li>
       {% endfor %}
+
     </ul>
-  </body>
-</html>
+
+    {% else %}
+      <p class="contagem">Nenhum evento cadastrado.</p>
+    {% endif %}
+{% endblock %}

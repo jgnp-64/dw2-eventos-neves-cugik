@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{%  block conteudo %}
+
+<h2>Formulário</h2>
+<form id="formLogin" method="post" action="{{url_for('autenticacao.login')}}">
+
+    <h2>Login</h2>
+    <label for=" email">Email: </label>
+    <input type="email" id = "email" name = "email" required>
+    <br><br>
+
+    <label for="senha">Senha: </label>
+    <input type="password" id = "senha" name = "senha" required>
+    <br><br>
+  
+    <p id = "error" role = "alert" aria-live="polite"></p>
+
+    <input type="submit" value="Enviar">
+
+    <p>Ainda não possue uma conta? <a href="{{ url_for('autenticacao.cadastro') }}">Registre-se aqui</a>.</p>
+
+</form>
+
+{% endblock %}
